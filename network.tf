@@ -28,7 +28,7 @@ resource "aws_security_group" "privx-db" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags = {
-    Name = "PRIVXDB"
+    Name      = "PRIVXDB"
     Terraform = "True"
   }
 }
@@ -49,7 +49,7 @@ resource "aws_security_group" "privx-redis" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags = {
-    Name = "PRIVXREDIS"
+    Name      = "PRIVXREDIS"
     Terraform = "True"
   }
 }
@@ -82,7 +82,7 @@ resource "aws_security_group" "privx" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags = {
-    Name = "PRIVX"
+    Name      = "PRIVX"
     Terraform = "True"
   }
 }
@@ -122,7 +122,7 @@ resource "aws_security_group" "privx-webproxy" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags = {
-    Name = "PRIVXWEBPROXY"
+    Name      = "PRIVXWEBPROXY"
     Terraform = "True"
   }
 }
@@ -143,7 +143,7 @@ resource "aws_security_group" "privx-carrier" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags = {
-    Name = "PRIVXCARRIER"
+    Name      = "PRIVXCARRIER"
     Terraform = "True"
   }
 }

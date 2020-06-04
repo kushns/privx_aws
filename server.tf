@@ -23,26 +23,26 @@ data "aws_ami" "centos7" {
 }
 
 resource "random_password" "database_password" {
-  length = 20
-  special = true
+  length           = 20
+  special          = true
   override_special = "!@#%-_=+"
 }
 
 resource "random_password" "superuser_password" {
-  length = 20
-  special = true
+  length           = 20
+  special          = true
   override_special = "!@#%-_=+"
 }
 
 module "pgsql_database" {
-  source                 = "./modules/aws-rds-postgresql"
-  allocated_storage      = var.allocated_storage
-  engine_version         = var.engine_version
-  instance_type          = var.instance_typedb
-  database_name          = var.database_name
-  database_username      = var.database_username
-  database_password      = "${var.database_password == "" ? random_password.database_password.result : var.database_password}"
-  security_group         = [aws_security_group.privx-db.id]
+  source            = "./modules/aws-rds-postgresql"
+  allocated_storage = var.allocated_storage
+  engine_version    = var.engine_version
+  instance_type     = var.instance_typedb
+  database_name     = var.database_name
+  database_username = var.database_username
+  database_password = "${var.database_password == "" ? random_password.database_password.result : var.database_password}"
+  security_group    = [aws_security_group.privx-db.id]
 }
 
 

@@ -9,19 +9,19 @@ variable "availability_zone" {
 }
 
 variable "instance_typeprivx" {
-  default = "t2.medium"
-  type    = string
+  default     = "t2.medium"
+  type        = string
   description = "EC2 instance type for Privx"
 }
 
 variable "instance_typeprivxcarrier" {
-  default = "t2.medium"
-  type    = string
+  default     = "t2.medium"
+  type        = string
   description = "EC2 instance type for Privx Web carrier"
 }
 variable "instance_typeprivxwebproxy" {
-  default = "t2.medium"
-  type    = string
+  default     = "t2.medium"
+  type        = string
   description = "EC2 instance type for Privx Web Proxy"
 }
 
