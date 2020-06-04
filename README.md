@@ -39,13 +39,6 @@ private_key = "..\\aws\\default-linux-key-openssh.txt"
 
 **Note:** private_key and secret.tf.vars files should be created outside git repo as these files contain credentials and private_key.
 
-* aws-credentials file template
-```
-[default]
-aws_access_key_id = <aws_access_key_id>
-aws_secret_access_key = <aws_secret_access_key>
-```
-
 * To use Static password: Create secret.tfvars file and update password as shown below else RANDOM password will be generated and included in output.
 ```
 database_password = "<mypassword>"
@@ -57,7 +50,7 @@ superuser_password = "<mypassword>"
 1. Run `terraform plan -var-file=starter.tfvars -var-file=../secret.tfvars` 
 1. If plan looks good, run `terraform apply -var-file=starter.tfvars -var-file=../secret.tfvars`
 
-**Note: No need to specify "-var-file=../secret.tfvars" if using RANDOM password**
+**Note:** No need to specify "-var-file=../secret.tfvars" if using RANDOM password
 
 In the final step, please obtain a [license code](https://info.ssh.com/privx-free-access-management-software) to activate your environment.
 
