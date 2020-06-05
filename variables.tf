@@ -29,9 +29,16 @@ variable "key_name" {
   type        = string
   description = "AWS key pair name for SSH password less authentication"
 }
+
 variable "private_key" {
   type        = string
   description = "Private key path for key name specified above"
+}
+
+variable "os_username" {
+  default     = "centos"
+  type        = string
+  description = "OS username on EC2 instnaces for which private key specified"
 }
 
 variable "privx_superuser" {
@@ -40,7 +47,7 @@ variable "privx_superuser" {
   description = "Privx superuser name"
 }
 variable "superuser_password" {
-  default     = ""
+  default     = "random"
   type        = string
   description = "PrivX superuser password"
 }
@@ -71,19 +78,19 @@ variable "engine_version" {
 variable "database_name" {
   default     = "privx"
   type        = string
-  description = "Name of database inside storage engine"
+  description = "Name of database"
 }
 
 variable "database_username" {
   default     = "privx"
   type        = string
-  description = "Name of user inside storage engine"
+  description = "Name of master database user"
 }
 
 variable "database_password" {
-  default     = ""
+  default     = "random"
   type        = string
-  description = "Database password inside storage engine"
+  description = "Database password for master database user"
 }
 
 variable "node_type" {

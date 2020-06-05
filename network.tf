@@ -8,7 +8,7 @@ data "aws_subnet_ids" "default" {
   vpc_id = aws_default_vpc.default.id
 }
 
-resource "aws_default_subnet" "default_subnet" {
+resource "aws_default_subnet" "default" {
   availability_zone = var.availability_zone
 }
 

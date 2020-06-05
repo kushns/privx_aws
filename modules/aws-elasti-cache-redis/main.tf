@@ -9,7 +9,7 @@ resource "aws_elasticache_cluster" "default" {
   security_group_ids   = var.security_group_ids
 
   tags = {
-    Name      = "redis"
+    Name      = "PRIVXREDIS"
     Terraform = "True"
   }
 }

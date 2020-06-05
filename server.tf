@@ -60,7 +60,7 @@ resource "aws_instance" "privx" {
     Terraform = "True"
   }
   vpc_security_group_ids = [aws_security_group.privx.id]
-  subnet_id              = aws_default_subnet.default_subnet.id
+  subnet_id              = aws_default_subnet.default.id
   root_block_device {
     delete_on_termination = true
   }
@@ -99,7 +99,7 @@ resource "aws_instance" "privx" {
     ]
     connection {
       host        = self.public_dns
-      user        = "centos"
+      user        = var.os_username
       private_key = file(var.private_key)
     }
   }
@@ -113,7 +113,7 @@ resource "aws_instance" "privx-carrier" {
     Terraform = "True"
   }
   vpc_security_group_ids = [aws_security_group.privx-carrier.id]
-  subnet_id              = aws_default_subnet.default_subnet.id
+  subnet_id              = aws_default_subnet.default.id
   root_block_device {
     delete_on_termination = true
   }
@@ -127,7 +127,7 @@ resource "aws_instance" "privx-carrier" {
     ]
     connection {
       host        = self.public_dns
-      user        = "centos"
+      user        = var.os_username
       private_key = file(var.private_key)
     }
   }
@@ -141,7 +141,7 @@ resource "aws_instance" "privx-webproxy" {
     Terraform = "True"
   }
   vpc_security_group_ids = [aws_security_group.privx-webproxy.id]
-  subnet_id              = aws_default_subnet.default_subnet.id
+  subnet_id              = aws_default_subnet.default.id
   root_block_device {
     delete_on_termination = true
   }
@@ -158,7 +158,7 @@ resource "aws_instance" "privx-webproxy" {
     ]
     connection {
       host        = self.public_dns
-      user        = "centos"
+      user        = var.os_username
       private_key = file(var.private_key)
     }
   }
