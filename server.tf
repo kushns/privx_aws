@@ -41,7 +41,7 @@ module "pgsql_database" {
   instance_type     = var.instance_typedb
   database_name     = var.database_name
   database_username = var.database_username
-  database_password = "${var.database_password == "" ? random_password.database_password.result : var.database_password}"
+  database_password = "${var.database_password == "random" ? random_password.database_password.result : var.database_password}"
   security_group    = [aws_security_group.privx-db.id]
 }
 
@@ -77,12 +77,12 @@ resource "aws_instance" "privx" {
       "export PRIVX_DNS_NAMES=\"${aws_instance.privx.private_dns} ${aws_instance.privx.public_dns}\"",
       "export PRIVX_IP_ADDRESSES=\"${aws_instance.privx.private_ip} ${aws_instance.privx.public_ip}\"",
       "export PRIVX_SUPERUSER=\"${var.privx_superuser}\"",
-      "export PRIVX_SUPERUSER_PASSWORD=\"${var.superuser_password == "" ? random_password.superuser_password.result : var.superuser_password}\"",
+      "export PRIVX_SUPERUSER_PASSWORD=\"${var.superuser_password == "random" ? random_password.superuser_password.result : var.superuser_password}\"",
       "export PRIVX_SUPERUSER_EMAIL=\"${var.privx_superuser}@${var.email_domain}\"",
       "export PRIVX_USE_EXTERNAL_DATABASE=1",
       "export PRIVX_DATABASE_NAME=\"${var.database_name}\"",
       "export PRIVX_DATABASE_USERNAME=\"${var.database_username}\"",
-      "export PRIVX_DATABASE_PASSWORD=\"${var.database_password == "" ? random_password.database_password.result : var.database_password}\"",
+      "export PRIVX_DATABASE_PASSWORD=\"${var.database_password == "random" ? random_password.database_password.result : var.database_password}\"",
       "export PRIVX_POSTGRES_ADDRESS=\"${module.pgsql_database.database_address}\"",
       "export PRIVX_POSTGRES_PORT=5432",
       "export DB_EXTERNAL_CREATE_PSQL_USER=false",
@@ -162,28 +162,4 @@ resource "aws_instance" "privx-webproxy" {
       private_key = file(var.private_key)
     }
   }
-}
-
-output "privx_publicdns" {
-  value = aws_instance.privx.public_dns
-}
-
-output "privxwebprxy_publicdns" {
-  value = aws_instance.privx-webproxy.public_dns
-}
-
-output "privxcarrier_publicdns" {
-  value = aws_instance.privx-carrier.public_dns
-}
-
-output "privxwebproxy_privateip" {
-  value = aws_instance.privx-webproxy.private_ip
-}
-
-output "database_password" {
-  value = "${var.database_password == "" ? random_password.database_password.result : "static"}"
-}
-
-output "superuser_password" {
-  value = "${var.superuser_password == "" ? random_password.superuser_password.result : "static"}"
 }
