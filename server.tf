@@ -100,7 +100,7 @@ resource "aws_instance" "privx" {
     connection {
       host        = self.public_dns
       user        = var.os_username
-      private_key = file(var.private_key)
+      private_key = var.private_key
     }
   }
 }
@@ -128,7 +128,7 @@ resource "aws_instance" "privx-carrier" {
     connection {
       host        = self.public_dns
       user        = var.os_username
-      private_key = file(var.private_key)
+      private_key = var.private_key
     }
   }
 }
@@ -159,7 +159,7 @@ resource "aws_instance" "privx-webproxy" {
     connection {
       host        = self.public_dns
       user        = var.os_username
-      private_key = file(var.private_key)
+      private_key = var.private_key
     }
   }
 }
