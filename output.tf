@@ -15,9 +15,9 @@ output "privxwebproxy_privateip" {
 }
 
 output "database_password" {
-  value = "${var.database_password == "random" ? random_password.database_password.result : "static"}"
+  value = var.database_password == "random" ? random_password.database_password.result : "static"
 }
 
 output "superuser_password" {
-  value = "${var.superuser_password == "random" ? random_password.superuser_password.result : "static"}"
+  value = var.superuser_password == "random" ? random_password.superuser_password.result : "static"
 }
