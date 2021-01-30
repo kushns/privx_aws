@@ -25,7 +25,7 @@ data "aws_ami" "centos7" {
 resource "random_password" "database_password" {
   length           = 20
   special          = true
-  override_special = "!@#%-_=+"
+  override_special = "!#%-_=+"
 }
 
 resource "random_password" "superuser_password" {
@@ -41,7 +41,7 @@ module "pgsql_database" {
   instance_type     = var.instance_typedb
   database_name     = var.database_name
   database_username = var.database_username
-  database_password = "${var.database_password == "random" ? random_password.database_password.result : var.database_password}"
+  database_password = var.database_password == "random" ? random_password.database_password.result : var.database_password
   security_group    = [aws_security_group.privx-db.id]
 }
 
