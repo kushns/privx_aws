@@ -34,7 +34,7 @@ availability_zone = "eu-west-2a"
 key_name = "default-linux-key"
 
 # Private key path for key name specified above, Update private key path
-private_key = "..\\aws\\default-linux-key-openssh.txt"
+private_key = "~/.ssh/id_rsa"
 ```
 
 **Note:** private_key and secret.tf.vars files should be created outside git repo as these files contain credentials and private_key.
