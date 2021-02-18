@@ -47,8 +47,8 @@ superuser_password = "<mypassword>"
 
 ## Deployment
 1. Run `terraform init`
-1. Run `terraform plan -var-file=starter.tfvars -var-file=../secret.tfvars` 
-1. If plan looks good, run `terraform apply -var-file=starter.tfvars -var-file=../secret.tfvars`
+1. Run `terraform plan -var-file=../secret.tfvars` 
+1. If plan looks good, run `terraform apply -var-file=../secret.tfvars`
 
 **Note:** No need to specify "-var-file=../secret.tfvars" if using RANDOM password
 
